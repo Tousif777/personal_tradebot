@@ -30,3 +30,6 @@ profit_history.json
 # OS specific
 .DS_Store
 Thumbs.db 
+
+
+requirements.txt
