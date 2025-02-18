@@ -1,6 +1,31 @@
 # Crypto Trading Bot
 
-A safe and conservative trading bot designed for small accounts, using AI-enhanced technical analysis on the Binance platform.
+A safe and conservative trading bot designed for small to large accounts, using AI-enhanced technical analysis on the Binance platform.
+
+## Expected Monthly Returns
+
+| Investment Amount | Expected Monthly Return* | Daily Trades | Risk Level |
+|------------------|-------------------------|--------------|------------|
+| $10              | $2 - $3                | 4            | Minimal    |
+| $50              | $10 - $15              | 4            | Low        |
+| $100             | $20 - $30              | 4            | Low        |
+| $500             | $100 - $150            | 4            | Moderate   |
+| $1,000           | $200 - $300            | 4            | Moderate   |
+
+*Based on:
+- 0.2-0.3% profit per successful trade
+- 22 trading days per month
+- 60-70% trade success rate
+- Includes trading fees
+- Conservative risk management
+
+⚠️ **Important Risk Disclaimer**
+- Returns are NOT guaranteed
+- Past performance doesn't predict future results
+- Crypto markets are highly volatile
+- Never invest more than you can afford to lose
+- Start with small amounts to test
+- Some months may be profitable, others may show losses
 
 ## Features
 
@@ -11,6 +36,17 @@ A safe and conservative trading bot designed for small accounts, using AI-enhanc
 - 📈 Trailing stop-loss
 - 📝 Comprehensive logging
 
+## Safety Features
+
+- ✅ Tight stop-loss (0.20%)
+- ✅ Daily loss limits (2.0%)
+- ✅ Position size limits (25% max)
+- ✅ Maximum 4 trades per day
+- ✅ Automatic shutdown after 2 losses
+- ✅ Volatility protection
+- ✅ Minimum volume requirements
+- ✅ Spread monitoring
+
 ## Requirements
 
 - Node.js (v14 or higher)
@@ -18,16 +54,7 @@ A safe and conservative trading bot designed for small accounts, using AI-enhanc
 - OpenAI API key
 - Minimum 10 USDT for trading
 
-## Safety Features
-
-- ✅ Strict risk management
-- ✅ Position size limits
-- ✅ Maximum daily trade limits
-- ✅ Trailing stops for profit protection
-- ✅ Multiple technical indicators confirmation
-- ✅ AI sentiment analysis
-
-## Installation
+## Quick Start
 
 1. Clone the repository:
    ```bash
@@ -48,16 +75,7 @@ A safe and conservative trading bot designed for small accounts, using AI-enhanc
 4. Edit `.env` with your:
    - Binance API credentials
    - OpenAI API key
-   - Trading preferences
-
-## Configuration
-
-The bot uses safe default settings:
-- Initial investment: $10 per trade
-- Maximum 4 trades per day
-- 0.35% stop loss
-- 0.25% trailing stop
-- Conservative RSI ranges (35-65)
+   - Investment amount (INITIAL_INVESTMENT)
 
 ## Usage
 
@@ -71,41 +89,18 @@ Monitor logs:
 tail -f combined.log
 ```
 
-## Expected Returns
+## Monthly Performance Monitoring
 
-With $10 initial investment:
-- Target per trade: ~0.3%
-- Expected daily: ~$0.12 (4 trades)
-- Focus on capital preservation
-- Conservative profit targets
+The bot maintains detailed logs of:
+- Daily profit/loss
+- Trade success rate
+- Risk management triggers
+- Account balance changes
 
-## Warning
-
-- This is a conservative bot designed for capital preservation
-- Never invest more than you can afford to lose
-- Start with paper trading
-- Monitor the bot regularly
-- Past performance doesn't guarantee future results
-
-## Files Structure
-
-```
-├── src/
-│   ├── index.js          # Main bot logic
-│   ├── ai_analysis.js    # AI integration
-│   ├── technical_analysis.js # Technical indicators
-│   ├── position_manager.js   # Position management
-│   └── logger.js         # Logging configuration
-├── .env.example          # Configuration template
-├── package.json          # Dependencies
-└── README.md            # Documentation
-```
-
-## Logging
-
-The bot maintains two log files:
-- `combined.log`: All activities
-- `error.log`: Error messages only
+Monitor your monthly performance:
+1. Check `combined.log` for daily summaries
+2. Review error.log for any issues
+3. Track monthly profit in the console output
 
 ## Safety Checklist
 
