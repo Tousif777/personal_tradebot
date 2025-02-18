@@ -8,9 +8,11 @@ const PositionManager = require('./position_manager');
 
 class TradingBot {
     constructor() {
+        this.timeOffset = 0;
         this.client = Binance({
             apiKey: process.env.BINANCE_API_KEY,
-            apiSecret: process.env.BINANCE_API_SECRET
+            apiSecret: process.env.BINANCE_API_SECRET,
+            getTime: () => Date.now() + this.timeOffset
         });
 
         this.config = {
@@ -29,11 +31,41 @@ class TradingBot {
         this.lastTradeTime = null;
     }
 
+    async syncTime() {
+        try {
+            const serverTime = await this.client.time();
+            const localTime = Date.now();
+            this.timeOffset = serverTime - localTime;
+            
+            if (isNaN(this.timeOffset)) {
+                throw new Error('Calculated time offset is NaN');
+            }
+
+            if (Math.abs(this.timeOffset) > 1000) {
+                logger.warn(`Time offset detected: ${this.timeOffset}ms. Adjusted timestamp.`);
+            }
+            
+            return true;
+        } catch (error) {
+            logger.error('Time sync failed:', error);
+            return false;
+        }
+    }
+
     async start() {
         try {
+            // Sync time with Binance server before any operation
+            await this.syncTime();
+            
+            // Wait a short moment for the time sync to take effect
+            await new Promise(resolve => setTimeout(resolve, 1000));
+
             // Test API connection
             await this.client.ping();
             logger.info('Connected to Binance API');
+
+            // Re-sync time after connection test
+            await this.syncTime();
 
             // Validate trading pair
             const exchangeInfo = await this.client.exchangeInfo({ symbol: this.config.tradingPair });
