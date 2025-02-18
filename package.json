@@ -1,0 +1,20 @@
+{
+  "name": "micro-trading-bot",
+  "version": "1.0.0",
+  "description": "A trading bot designed to generate ~$1 daily profit from $10 investment",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "binance-api-node": "^0.12.7",
+    "dotenv": "^16.3.1",
+    "node-schedule": "^2.1.1",
+    "winston": "^3.11.0",
+    "openai": "^4.24.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+} 

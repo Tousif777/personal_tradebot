@@ -1,0 +1,4 @@
+Design and propose a trading bot
+that can consistently generate profits of 
+approximately $1 per day from 
+an initial investment of $10. 
